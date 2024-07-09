@@ -1,30 +1,42 @@
-# React + TypeScript + Vite
+<h1 align="center">
+    <img alt="plann.er" title="#plann.er" src=".github/logo.svg" width="250px" />
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h4 align="center"> 
+	:heavy_check_mark: 🚀 Pass.in 🚀 :heavy_check_mark:
+</h4>
 
-Currently, two official plugins are available:
+<p align="center">
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-como-executar">Como executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#%EF%B8%8F-demonstração">Demonstração</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-licença">Licença</a>
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🈸 Projeto
 
-## Expanding the ESLint configuration
+O projeto é um site desktop para montar planos de viagem com amigos, registrar atividades e links úteis.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<b>Funcionalidades:</b>
+- Fazer um planejamento de viagem
 
-- Configure the top-level `parserOptions` property like this:
+## 🔧 Como executar
+Vá para a pasta em que você clonou o projeto, abra o terminal e execute os comandos:
+- 01 - npm install (Esse comando instalará todas as dependências do projeto)
+- 02 - npm run dev (Esse comando irá rodar projeto em: http://localhost:5173)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## 📽️ Demonstração
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 🚀 Tecnologias
+
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
+
+- [React](https://reactjs.org)
+- [Vite](https://vitejs.dev)
+- [TailwindCSS](https://tailwindcss.com)
+- [Typescript](https://www.typescriptlang.org)
+- [Lucide React](https://lucide.dev)
+
+## :memo: Licença
+Este projeto está sob a licença do MIT. Consulte a [LICENÇA](LICENSE) para obter detalhes.
