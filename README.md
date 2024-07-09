@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center"> 
-	:heavy_check_mark: 🚀 Pass.in 🚀 :heavy_check_mark:
+	:heavy_check_mark: 🚀 Plann.er 🚀 :heavy_check_mark:
 </h4>
 
 <p align="center">
