@@ -1,3 +1,6 @@
+### 🌐 PT-BR
+#### [EN-US](https://github.com/ArthurFakhouri/NLW-Journey-Client-React/blob/master/READMEENUS.md)
+
 <h1 align="center">
     <img alt="plann.er" title="#plann.er" src=".github/logo.svg" width="250px" />
 </h1>
@@ -20,6 +23,11 @@ O projeto é um site desktop para montar planos de viagem com amigos, registrar 
 
 <b>Funcionalidades:</b>
 - Fazer um planejamento de viagem
+- Adicionar participantes da viagem
+- Atualizar dados de viagem
+- Cadastrar atividade
+- Cadastrar links
+- Gerenciar convidados (Adiconar ou remover participantes)
 
 ## 🔧 Como executar
 Vá para a pasta em que você clonou o projeto, abra o terminal e execute os comandos:
@@ -27,6 +35,13 @@ Vá para a pasta em que você clonou o projeto, abra o terminal e execute os com
 - 02 - npm run dev (Esse comando irá rodar projeto em: http://localhost:5173)
 
 ## 📽️ Demonstração
+
+
+https://github.com/ArthurFakhouri/NLW-Journey-Client-React/assets/71707151/991b07fc-b5fb-4403-8b67-871fadcd283f
+
+
+
+
 
 ## 🚀 Tecnologias
 
