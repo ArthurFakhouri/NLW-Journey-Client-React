@@ -1,3 +1,6 @@
+### 🌐 PT-BR
+#### [EN-US](https://github.com/ArthurFakhouri/NLW-Journey-Client-React/blob/master/READMEENUS.md)
+
 <h1 align="center">
     <img alt="plann.er" title="#plann.er" src=".github/logo.svg" width="250px" />
 </h1>
