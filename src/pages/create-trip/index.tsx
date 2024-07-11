@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom"
 import { InviteGuestsModal } from "./invite-guests-modal"
 import { ConfirmTripModal } from "./confirm-trip-modal"
 import { TripPlanning } from "./trip-planning"
+import { DateRange } from "react-day-picker"
+import { api } from "../../lib/axios"
 
 export function CreateTrip() {
 
@@ -12,6 +14,13 @@ export function CreateTrip() {
   const [isGuestsInputOpen, setIsGuestsInputOpen] = useState(false)
   const [isGuestsModalOpen, setIsGuestsModalOpen] = useState(false)
   const [isConfirmTripModalOpen, setIsConfirmTripModalOpen] = useState(false)
+
+  const [destination, setDestination] = useState('')
+  const [ownerName, setOwnerName] = useState('')
+  const [ownerEmail, setOwnerEmail] = useState('')
+  const [eventStartAndEndDates, setEventStartAndEndDates] = useState<DateRange | undefined>()
+  const [isLoading, setIsLoading] = useState(false)
+
   const [emailsToInvite, setEmailsToInvite] = useState([
     'diego@rocketseat.com.br',
     'jessica.white44@yahoo.com'
@@ -65,19 +74,50 @@ export function CreateTrip() {
     setEmailsToInvite(emailsToInviteWithoutRemoved)
   }
 
-  function createTrip() {
-    navigate('/trips/123')
+  async function createTrip() {
+
+    if (!destination
+      || (!eventStartAndEndDates?.from || !eventStartAndEndDates.to)
+      || emailsToInvite.length === 0
+      || (!ownerName || !ownerEmail)
+    ) {
+      return
+    }
+
+    setIsLoading(true)
+    try {
+      const response = await api.post('/trips', {
+        destination,
+        starts_at: eventStartAndEndDates?.from,
+        ends_at: eventStartAndEndDates?.to,
+        emails_to_invite: emailsToInvite,
+        owner_name: ownerName,
+        owner_email: ownerEmail,
+      })
+      setIsLoading(false)
+
+      const { tripId } = response.data
+
+      navigate(`/trips/${tripId}`)
+    } catch (error) {
+      setIsLoading(false)
+      console.log(error)
+    }
   }
 
   return (
     <div className="h-screen flex items-center justify-center text-center bg-pattern bg-no-repeat bg-center">
-      <TripPlanning 
+      <TripPlanning
         openGuestsInput={openGuestsInput}
         closeGuestsInput={closeGuestsInput}
         emailsToInvite={emailsToInvite}
         isGuestsInputOpen={isGuestsInputOpen}
         openConfirmTripModal={openConfirmTripModal}
         openGuestsModal={openGuestsModal}
+        destination={destination}
+        setDestination={setDestination}
+        eventStartAndEndDates={eventStartAndEndDates}
+        setEventStartAndEndDates={setEventStartAndEndDates}
       />
 
       {
@@ -99,6 +139,11 @@ export function CreateTrip() {
             closeConfirmTripModal={closeConfirmTripModal}
             addNewEmailToInvite={addNewEmailToInvite}
             createTrip={createTrip}
+            ownerName={ownerName}
+            setOwnerName={setOwnerName}
+            ownerEmail={ownerEmail}
+            setOwnerEmail={setOwnerEmail}
+            isLoading={isLoading}
           />
           , document.body)
       }

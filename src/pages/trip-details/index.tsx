@@ -5,7 +5,7 @@ import { ImportantLinks } from "./important-links";
 import { Guests } from "./guests";
 import { Activities } from "./activities";
 import { DestinationAndDateHeader } from "./destination-and-date-header";
-import { Button } from "../../components/button";
+import { Button } from "../../components/Button";
 
 export function TripDetails() {
 

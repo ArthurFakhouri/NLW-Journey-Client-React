@@ -1,17 +1,28 @@
 import { Mail, User, X } from "lucide-react";
 import { FormEvent } from "react";
-import { Button } from "../../components/button";
+import { Button } from "../../components/Button";
+import { Loader } from "../../components/Loader";
 
 type ConfirmTripCreationProps = {
   closeConfirmTripModal: () => void
   addNewEmailToInvite: (event: FormEvent<HTMLFormElement>) => void
   createTrip: () => void
+  ownerName: string
+  setOwnerName: (name: string) => void
+  ownerEmail: string
+  setOwnerEmail: (email: string) => void
+  isLoading: boolean
 }
 
 export function ConfirmTripModal({
   closeConfirmTripModal,
   addNewEmailToInvite,
-  createTrip
+  createTrip,
+  ownerName,
+  setOwnerName,
+  ownerEmail,
+  setOwnerEmail,
+  isLoading,
 }: ConfirmTripCreationProps) {
   return (
     <div className='fixed inset-0 bg-black/60 flex items-center justify-center'>
@@ -44,6 +55,8 @@ export function ConfirmTripModal({
                 name='name'
                 className='bg-transparent flex-1 placeholder-zinc-400 outline-none'
                 placeholder='Seu nome completo'
+                value={ownerName}
+                onChange={(e) => setOwnerName(e.target.value)}
               />
             </div>
             <div
@@ -55,14 +68,17 @@ export function ConfirmTripModal({
                 name='email'
                 className='bg-transparent flex-1 placeholder-zinc-400 outline-none'
                 placeholder='Seu e-mail pessoal'
+                value={ownerEmail}
+                onChange={(e) => setOwnerEmail(e.target.value)}
               />
             </div>
           </div>
           <Button
             type='submit'
             onClick={createTrip}
+            disabled={isLoading}
           >
-            Confirmar criação de viagem
+            {isLoading && <Loader variant="secondary" />} Confirmar criação de viagem
           </Button>
         </form>
       </div>

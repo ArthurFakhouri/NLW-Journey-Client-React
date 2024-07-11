@@ -1,5 +1,9 @@
 import { Calendar, Tag, X } from "lucide-react";
-import { Button } from "../../components/button";
+import { Button } from "../../components/Button";
+import { FormEvent, useState } from "react";
+import { api } from "../../lib/axios";
+import { useParams } from "react-router-dom";
+import { Loader } from "../../components/Loader";
 
 type CreateActivityModalProps = {
   closeCreateActivityModal: () => void
@@ -8,6 +12,28 @@ type CreateActivityModalProps = {
 export function CreateActivityModal({
   closeCreateActivityModal
 }: CreateActivityModalProps) {
+
+  const { tripId } = useParams()
+  const [isLoading, setIsLoading] = useState(false)
+
+  async function createActivity(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const data = new FormData(event.currentTarget)
+
+    const title = data.get('title')?.toString()
+    const occurs_at = data.get('occurs_at')?.toString()
+
+    setIsLoading(true)
+    await api.post(`/trips/${tripId}/activities`, {
+      title,
+      occurs_at,
+    })
+    setIsLoading(false)
+
+    window.document.location.reload()
+  }
+
   return (
     <div className='fixed inset-0 bg-black/60 flex items-center justify-center'>
       <div className='w-[540px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5'>
@@ -24,6 +50,7 @@ export function CreateActivityModal({
         </div>
         <form
           className='flex flex-col gap-3'
+          onSubmit={createActivity}
         >
           <div className='flex flex-col gap-2'>
             <div
@@ -53,8 +80,9 @@ export function CreateActivityModal({
           <Button
             type='submit'
             className="justify-center"
+            disabled={isLoading}
           >
-            Salvar atividade
+            {isLoading && <Loader variant="secondary" />} Salvar atividade
           </Button>
         </form>
       </div>

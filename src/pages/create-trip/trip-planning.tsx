@@ -1,3 +1,4 @@
+import { DateRange } from "react-day-picker";
 import { DestinationAndDateStep } from "./steps/destination-and-date-step";
 import { InviteGuestsStep } from "./steps/invite-guests-step";
 
@@ -8,6 +9,10 @@ type TripPlanningProps = {
   openGuestsModal: () => void
   emailsToInvite: string[]
   openConfirmTripModal: () => void
+  destination: string
+  setDestination: (destination: string) => void
+  eventStartAndEndDates: DateRange | undefined
+  setEventStartAndEndDates: (dates: DateRange | undefined) => void
 }
 
 
@@ -17,7 +22,11 @@ export function TripPlanning({
   isGuestsInputOpen,
   openGuestsModal,
   emailsToInvite,
-  openConfirmTripModal
+  openConfirmTripModal,
+  destination,
+  setDestination,
+  eventStartAndEndDates,
+  setEventStartAndEndDates
 }: TripPlanningProps) {
   return (
     <div className="max-w-3xl w-full px-6 space-y-10">
@@ -30,6 +39,10 @@ export function TripPlanning({
           openGuestsInput={openGuestsInput}
           closeGuestsInput={closeGuestsInput}
           isGuestsInputOpen={isGuestsInputOpen}
+          destination={destination}
+          setDestination={setDestination}
+          eventStartAndEndDates={eventStartAndEndDates}
+          setEventStartAndEndDates={setEventStartAndEndDates}
         />
         {
           isGuestsInputOpen &&
