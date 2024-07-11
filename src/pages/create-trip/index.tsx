@@ -6,6 +6,7 @@ import { ConfirmTripModal } from "./confirm-trip-modal"
 import { TripPlanning } from "./trip-planning"
 import { DateRange } from "react-day-picker"
 import { api } from "../../lib/axios"
+import { format } from "date-fns"
 
 export function CreateTrip() {
 
@@ -105,6 +106,12 @@ export function CreateTrip() {
     }
   }
 
+  const displayedDate = eventStartAndEndDates?.from && eventStartAndEndDates.to ?
+    format(eventStartAndEndDates.from, "dd' de 'LLL")
+      .concat(' até ')
+      .concat(format(eventStartAndEndDates.to, "dd' de 'LLL"))
+    : null
+
   return (
     <div className="h-screen flex items-center justify-center text-center bg-pattern bg-no-repeat bg-center">
       <TripPlanning
@@ -139,6 +146,8 @@ export function CreateTrip() {
             closeConfirmTripModal={closeConfirmTripModal}
             addNewEmailToInvite={addNewEmailToInvite}
             createTrip={createTrip}
+            destination={destination}
+            displayedDate={displayedDate}
             ownerName={ownerName}
             setOwnerName={setOwnerName}
             ownerEmail={ownerEmail}

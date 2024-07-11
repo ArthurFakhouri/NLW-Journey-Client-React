@@ -7,6 +7,8 @@ type ConfirmTripCreationProps = {
   closeConfirmTripModal: () => void
   addNewEmailToInvite: (event: FormEvent<HTMLFormElement>) => void
   createTrip: () => void
+  destination: string
+  displayedDate: string | null
   ownerName: string
   setOwnerName: (name: string) => void
   ownerEmail: string
@@ -18,6 +20,8 @@ export function ConfirmTripModal({
   closeConfirmTripModal,
   addNewEmailToInvite,
   createTrip,
+  destination,
+  displayedDate,
   ownerName,
   setOwnerName,
   ownerEmail,
@@ -36,9 +40,9 @@ export function ConfirmTripModal({
           </div>
           <p className='text-sm leading-[160%] text-zinc-400'>
             Para concluir a criação da viagem para {' '}
-            <span className='text-zinc-100 font-bold'>Florianópolis, Brasil</span>
+            <span className='text-zinc-100 font-bold'>{destination}</span>
             {" nas datas de "}
-            <span className='text-zinc-100 font-bold'>16 a 27 de Agosto de 2024</span>
+            <span className='text-zinc-100 font-bold'>{displayedDate}</span>
             {" preencha seus dados abaixo:"}
           </p>
         </div>

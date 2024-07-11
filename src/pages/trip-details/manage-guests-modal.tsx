@@ -42,7 +42,7 @@ export function ManageGuestsModal({
 
   function addParticipantToRemove(participant: ParticipantProps) {
     if (participant.id.includes('add')) {
-      setParticipantsToAdd(prevState => prevState.filter(participant => participant.id !== participant.id))
+      setParticipantsToAdd(prevState => prevState.filter(participantAdd => participantAdd.id !== participant.id))
     } else {
       setParticipantsAux(prevState => prevState.filter(participantAux => participantAux.id !== participant.id))
       setParticipantsToRemove([...participantsToRemove, { ...participant, id: 'remove' + participant.id }])
@@ -57,7 +57,7 @@ export function ManageGuestsModal({
 
 
     setParticipantsToAdd([...participantsToAdd, {
-      id: `add-${participantsToAdd.length}`,
+      id: `add-${participantsToAdd.length}-${email}`,
       email,
       is_confirmed: false,
     }])
